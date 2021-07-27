@@ -22,4 +22,11 @@ public class MyConfigurationBean {
         return new BeanWithDependencyImpl(myOperation);
     }
 
+    @Bean
+    public UtilsDependency utilDependency(){
+        return new MyOperationImplementation();
+    }
+
+
+
 }
