@@ -2,6 +2,7 @@ package com.fundamentosplatzi.springboot.fundamentos;
 
 import com.fundamentosplatzi.springboot.fundamentos.bean.BeanWithDependency;
 import com.fundamentosplatzi.springboot.fundamentos.bean.MyBean;
+import com.fundamentosplatzi.springboot.fundamentos.bean.MyBeanWithProperties;
 import com.fundamentosplatzi.springboot.fundamentos.bean.UtilsDependency;
 import com.fundamentosplatzi.springboot.fundamentos.component.ComponentDependency;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -17,13 +18,15 @@ public class FundamentosApplication implements CommandLineRunner {
 	private MyBean myBean;
 	private BeanWithDependency beanWD;
 	private UtilsDependency ud;
+	private MyBeanWithProperties beanWP;
 
 	public FundamentosApplication(@Qualifier("componentTwoImplement") ComponentDependency componentDependency, MyBean myBean,
-	BeanWithDependency beanWD, @Qualifier("utilDependency") UtilsDependency ud){
+	BeanWithDependency beanWD, @Qualifier("utilDependency") UtilsDependency ud, MyBeanWithProperties beanWP){
 		this.componentDependency = componentDependency;
 		this.myBean = myBean;
 		this.beanWD = beanWD;
 		this.ud = ud;
+		this.beanWP = beanWP;
 
 	}
 
@@ -37,6 +40,7 @@ public class FundamentosApplication implements CommandLineRunner {
 		myBean.print();
 		beanWD.printWithDependency();
 		System.out.println(ud.getDate());
+		System.out.println(beanWP.function());
 	}
 
 }
